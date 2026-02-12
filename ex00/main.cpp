@@ -19,7 +19,7 @@ int main()
     std::cout << "After decrement:" << hightman.getGrade() << std::endl;
 
     Bureaucrat worstman("Worsttman", 150);
-    std::cout << "--- Worsttman ---" << std::endl;
+    std::cout << "--- Worstman ---" << std::endl;
     worstman.decrementGrade();
     std::cout << "After decrement:" << worstman.getGrade() << std::endl;
 }
