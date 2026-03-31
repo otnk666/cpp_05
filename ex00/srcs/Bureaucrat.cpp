@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skomatsu <skomatsu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/28 00:15:56 by skomatsu          #+#    #+#             */
+/*   Updated: 2026/03/17 22:24:04 by skomatsu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat()
@@ -68,4 +80,11 @@ const char* Bureaucrat::GradeTooHighExeption::what() const throw() {
 
 const char* Bureaucrat::GradeTooLowExeption::what() const throw() {
     return "Grade is too low";
+}
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
+{
+    os << b.getName() << ", ";
+    os << "bureaucrat grade " << b.getGrade() << ".";
+    return os;
 }

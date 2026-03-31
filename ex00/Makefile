@@ -1,28 +1,35 @@
-NAME	= ex00
 
-CXX		= c++
+NAME = ex00
+
+CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
 CXXFLAGS += -std=c++98 -pedantic
 
-RM 		= rm -rf
+RM = rm -rf
+SRCS_DIR = ./srcs
+INC_DIR = ./includes
 
-SRCS = main.cpp Bureaucrat.cpp 
+SRCS = $(SRCS_DIR)/main.cpp \
+		$(SRCS_DIR)/Bureaucrat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INCLUDES = Bureaucrat.hpp
+INCLUDES = -I $(INC_DIR)
 
-all: $(NAME)
+all : $(NAME)
 
 $(NAME): $(OBJS)
-		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) $(INCLUDES) -o $(NAME)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-		$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re
